@@ -17,12 +17,10 @@ df_normalized = (df - df.mean()) / df.std(ddof=0)
     # Check normalized statistics
 norm_stat = df_normalized.agg(['mean', lambda x: x.std(ddof=0)]).rename(index={'<lambda>': 'std'})
 
-
     # Compute mean of every 2 rows with improved accuracy
 df_block_means = []
 for i in range(0,9):
     df_block_mean = df.groupby(df.index // (2**i)).agg(lambda x: np.mean(x.values, dtype=np.float64))
-    
     df_block_means.append(df_block_mean.std(ddof=0))
 
 df_block_means_log2 = [np.log2(block) for block in df_block_means]

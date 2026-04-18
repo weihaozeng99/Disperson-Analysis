@@ -31,7 +31,7 @@ if raw_data is not None:
 
     # Normalize the data using the computed mean and std
     df_normalized = (df - df.mean()) / df.std(ddof=0)
-    
+
     
     # # Check normalized statistics
     # norm_stat = df_normalized.agg(['mean', lambda x: x.std(ddof=0)]).rename(index={'<lambda>': 'std'})
